@@ -14,6 +14,7 @@ spec:
     helm:
       valueFiles:
         - 'secrets://values.yaml'
+        - 'secrets://values.ci.yaml'
       values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
   destination:
     server: {{ .Values.destination.server }}
