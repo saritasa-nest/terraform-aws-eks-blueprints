@@ -11,11 +11,8 @@ spec:
     repoURL: {{ .Values.source.repoUrl }}
     targetRevision: {{ .Values.source.targetRevision }}
     path: {{ .Values.source.path }}
-    helm:
-      valueFiles:
-        - 'secrets://values.yaml'
-        - 'secrets://values.ci.yaml'
-      values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
+    plugin:
+      name: helm-value-files-glob-interpolation
   destination:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.namespace }}
