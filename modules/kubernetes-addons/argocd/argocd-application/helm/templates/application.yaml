@@ -11,16 +11,16 @@ spec:
     repoURL: {{ .Values.source.repoUrl }}
     targetRevision: {{ .Values.source.targetRevision }}
     path: {{ .Values.source.path }}
-    {{- if ((.Values.source.helm).values) -}}
-    helm:
-      valueFiles:
-        - 'secrets://values.yaml'
-        - 'secrets://values.ci.yaml'
-      values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
-    {{- else if ((.Values.source).plugin).name -}}
-    plugin:
-      name: .Values.source.plugin.name
-    {{- end -}}
+    {{ if ((.Values.source).plugin).name -}}
+      plugin:
+        name: {{ .Values.source.plugin.name }}
+    {{ else if ((.Values.source.helm).values) -}}
+      helm:
+        valueFiles:
+          - 'secrets://values.yaml'
+          - 'secrets://values.ci.yaml'
+        values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
+    {{- end }}
   destination:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.namespace }}
