@@ -74,6 +74,12 @@ resource "helm_release" "argocd_application" {
     type = "auto"
   }
 
+  set {
+    name = "source.plugin.name"
+    value = each.value.plugin
+    type = "auto"
+  }
+
   # Destination Config.
   set {
     name  = "destination.server"
