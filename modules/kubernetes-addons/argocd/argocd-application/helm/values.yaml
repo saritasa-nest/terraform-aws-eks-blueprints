@@ -20,6 +20,12 @@ source:
   helm :
     values: ""
 
+  plugin:
+    name: test-cmp
+    env:
+      - name: FOO
+        value: bar
+
 # Destination cluster.
 destination:
   server: "https://kubernetes.default.svc"

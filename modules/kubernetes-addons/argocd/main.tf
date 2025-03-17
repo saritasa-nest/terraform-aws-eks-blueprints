@@ -75,7 +75,7 @@ resource "helm_release" "argocd_application" {
   }
 
   set {
-    name = "source.plugin.name"
+    name = "source.plugin"
     value = each.value.plugin
     type = "auto"
   }
