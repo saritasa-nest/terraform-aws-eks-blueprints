@@ -11,16 +11,12 @@ spec:
     repoURL: {{ .Values.source.repoUrl }}
     targetRevision: {{ .Values.source.targetRevision }}
     path: {{ .Values.source.path }}
-    {{ if ((.Values.source).plugin) -}}
-      plugin:
-        {{ toYaml .Values.source.plugin | nindent 6 }}
-    {{ else if ((.Values.source.helm).values) -}}
-      helm:
-        valueFiles:
-          - 'values.yaml'
-          - 'values.ci.yaml'
-        values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
-    {{- end }}
+    plugin:
+      name: search-helm-values-files
+      parameters:
+        - array:
+            {{ toYaml .Values.source.plugin.value_files | nindent 10 }}
+          name: value_files
   destination:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.namespace }}

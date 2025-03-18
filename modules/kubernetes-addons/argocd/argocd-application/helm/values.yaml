@@ -21,10 +21,8 @@ source:
     values: ""
 
   plugin:
-    name: test-cmp
-    env:
-      - name: FOO
-        value: bar
+    value_files:
+      - test.yml
 
 # Destination cluster.
 destination:
