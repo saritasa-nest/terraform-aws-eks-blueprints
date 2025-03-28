@@ -82,14 +82,6 @@ resource "helm_release" "argocd_application" {
     ]
   }
 
-  set_list {
-    name = "source.plugin.chart_value_files"
-    value = length(try(each.value.chart_value_files, [])) > 0 ? each.value.chart_value_files : [
-      "values*.yaml",
-      "values*.yml",
-    ]
-  }
-
   # Destination Config.
   set {
     name  = "destination.server"
