@@ -17,6 +17,9 @@ spec:
         - array:
             {{ toYaml .Values.source.plugin.value_files | nindent 10 }}
           name: value_files
+        - array:
+            {{ toYaml .Values.source.plugin.chart_value_files | nindent 10 }}
+          name: chart_value_files
   destination:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.namespace }}
