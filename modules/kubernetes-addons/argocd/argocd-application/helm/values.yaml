@@ -20,6 +20,10 @@ source:
   helm :
     values: ""
 
+  plugin:
+    value_files:
+      - test.yml
+
 # Destination cluster.
 destination:
   server: "https://kubernetes.default.svc"

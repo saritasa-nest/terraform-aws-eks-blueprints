@@ -74,6 +74,14 @@ resource "helm_release" "argocd_application" {
     type = "auto"
   }
 
+  set_list {
+    name = "source.plugin.value_files"
+    value = length(try(each.value.value_files, [])) > 0 ? each.value.value_files : [
+      "values*.yaml",
+      "values*.yml",
+    ]
+  }
+
   # Destination Config.
   set {
     name  = "destination.server"
