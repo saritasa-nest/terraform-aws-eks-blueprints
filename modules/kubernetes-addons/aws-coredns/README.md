@@ -9,9 +9,10 @@ To enable and modify the EKS managed addon for CoreDNS, you can reference the fo
 ```hcl
   enable_amazon_eks_coredns = true
   amazon_eks_coredns_config = {
-    most_recent        = true
-    kubernetes_version = "1.21"
-    resolve_conflicts  = "OVERWRITE"
+    most_recent                 = true
+    kubernetes_version          = "1.21"
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
     ...
   }
 ```

@@ -12,7 +12,8 @@ To enable and modify the EKS managed addon for aws-ebs-csi-driver, you can refer
 ```hcl
   enable_amazon_eks_aws_ebs_csi_driver = true
   amazon_eks_aws_ebs_csi_driver_config = {
-    resolve_conflicts = "OVERWRITE"
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
     ...
   }
 ```

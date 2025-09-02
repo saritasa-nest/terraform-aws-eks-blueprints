@@ -25,14 +25,15 @@ Checkout this [doc](https://docs.aws.amazon.com/eks/latest/userguide/managing-vp
   enable_amazon_eks_vpc_cni = true # default is false
   #Optional
   amazon_eks_vpc_cni_config = {
-    addon_name               = "vpc-cni"
-    addon_version            = "v1.11.2-eksbuild.1"
-    service_account          = "aws-node"
-    resolve_conflicts        = "OVERWRITE"
-    namespace                = "kube-system"
-    service_account_role_arn = ""
-    preserve                 = true
-    additional_iam_policies  = []
+    addon_name                  = "vpc-cni"
+    addon_version               = "v1.11.2-eksbuild.1"
+    service_account             = "aws-node"
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
+    namespace                   = "kube-system"
+    service_account_role_arn    = ""
+    preserve                    = true
+    additional_iam_policies     = []
     configuration_values = jsonencode({
       env = {
         ENABLE_PREFIX_DELEGATION = "true"
@@ -45,45 +46,48 @@ Checkout this [doc](https://docs.aws.amazon.com/eks/latest/userguide/managing-vp
   enable_amazon_eks_coredns = true # default is false
   #Optional
   amazon_eks_coredns_config = {
-    addon_name               = "coredns"
-    addon_version            = "v1.8.4-eksbuild.1"
-    service_account          = "coredns"
-    resolve_conflicts        = "OVERWRITE"
-    namespace                = "kube-system"
-    service_account_role_arn = ""
-    preserve                 = true
-    additional_iam_policies  = []
-    configuration_values     = ""
-    tags                     = {}
+    addon_name                  = "coredns"
+    addon_version               = "v1.8.4-eksbuild.1"
+    service_account             = "coredns"
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
+    namespace                   = "kube-system"
+    service_account_role_arn    = ""
+    preserve                    = true
+    additional_iam_policies     = []
+    configuration_values        = ""
+    tags                        = {}
   }
 
   enable_amazon_eks_kube_proxy = true # default is false
   #Optional
   amazon_eks_kube_proxy_config = {
-    addon_name               = "kube-proxy"
-    addon_version            = "v1.21.2-eksbuild.2"
-    service_account          = "kube-proxy"
-    resolve_conflicts        = "OVERWRITE"
-    namespace                = "kube-system"
-    service_account_role_arn = ""
-    preserve                 = true
-    additional_iam_policies  = []
-    configuration_values     = ""
-    tags                     = {}
+    addon_name                  = "kube-proxy"
+    addon_version               = "v1.21.2-eksbuild.2"
+    service_account             = "kube-proxy"
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
+    namespace                   = "kube-system"
+    service_account_role_arn    = ""
+    preserve                    = true
+    additional_iam_policies     = []
+    configuration_values        = ""
+    tags                        = {}
   }
 
   enable_amazon_eks_aws_ebs_csi_driver = true # default is false
   #Optional
   amazon_eks_aws_ebs_csi_driver_config = {
-    addon_name               = "aws-ebs-csi-driver"
-    addon_version            = "v1.4.0-eksbuild.preview"
-    service_account          = "ebs-csi-controller-sa"
-    resolve_conflicts        = "OVERWRITE"
-    namespace                = "kube-system"
-    additional_iam_policies  = []
-    service_account_role_arn = ""
-    configuration_values     = ""
-    tags                     = {}
+    addon_name                  = "aws-ebs-csi-driver"
+    addon_version               = "v1.4.0-eksbuild.preview"
+    service_account             = "ebs-csi-controller-sa"
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
+    namespace                   = "kube-system"
+    additional_iam_policies     = []
+    service_account_role_arn    = ""
+    configuration_values        = ""
+    tags                        = {}
   }
 ```
 
