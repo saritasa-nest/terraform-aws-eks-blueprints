@@ -404,30 +404,34 @@ module "kubernetes_addons" {
 
   enable_amazon_eks_coredns = true
   amazon_eks_coredns_config = {
-    most_recent        = true
-    kubernetes_version = local.cluster_version
-    resolve_conflicts  = "OVERWRITE"
+    most_recent                 = true
+    kubernetes_version          = local.cluster_version
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
   }
 
   enable_amazon_eks_aws_ebs_csi_driver = true
   amazon_eks_aws_ebs_csi_driver_config = {
-    most_recent        = true
-    kubernetes_version = local.cluster_version
-    resolve_conflicts  = "OVERWRITE"
+    most_recent                 = true
+    kubernetes_version          = local.cluster_version
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
   }
 
   enable_amazon_eks_kube_proxy = true
   amazon_eks_kube_proxy_config = {
-    most_recent        = true
-    kubernetes_version = local.cluster_version
-    resolve_conflicts  = "OVERWRITE"
+    most_recent                 = true
+    kubernetes_version          = local.cluster_version
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
   }
 
   enable_amazon_eks_vpc_cni = true
   amazon_eks_vpc_cni_config = {
-    most_recent        = true
-    kubernetes_version = local.cluster_version
-    resolve_conflicts  = "OVERWRITE"
+    most_recent                 = true
+    kubernetes_version          = local.cluster_version
+    resolve_conflicts_on_create = "OVERWRITE"
+    resolve_conflicts_on_update = "OVERWRITE"
   }
 
   #---------------------------------------------------------------
