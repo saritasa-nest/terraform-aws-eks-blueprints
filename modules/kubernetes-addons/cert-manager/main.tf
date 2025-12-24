@@ -24,17 +24,18 @@ resource "helm_release" "cert_manager_letsencrypt" {
   version   = "0.1.0"
   namespace = local.helm_config["namespace"]
 
-  set {
-    name  = "email"
-    value = var.letsencrypt_email
-    type  = "string"
-  }
-
-  set {
-    name  = "dnsZones"
-    value = "{${join(",", toset(var.domain_names))}}"
-    type  = "string"
-  }
+  set = [
+    {
+      name  = "email"
+      value = var.letsencrypt_email
+      type  = "string"
+    },
+    {
+      name  = "dnsZones"
+      value = "{${join(",", toset(var.domain_names))}}"
+      type  = "string"
+    }
+  ]
 
   depends_on = [module.helm_addon]
 }
