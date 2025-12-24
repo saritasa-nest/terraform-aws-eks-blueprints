@@ -2,7 +2,7 @@ locals {
 
   context = {
     # Data resources
-    aws_region_name = data.aws_region.current.name
+    aws_region_name = data.aws_region.current.region
     # aws_caller_identity
     aws_caller_identity_account_id = data.aws_caller_identity.current.account_id
     aws_caller_identity_arn        = data.aws_iam_session_context.current.issuer_arn
