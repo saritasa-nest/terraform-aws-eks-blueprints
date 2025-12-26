@@ -41,7 +41,7 @@ module "aws_coredns" {
     var.self_managed_coredns_helm_config,
     {
       # Putting after because we don't want users to overwrite this - internal use only
-      image_registry = local.amazon_container_image_registry_uris[data.aws_region.current.name]
+      image_registry = local.amazon_container_image_registry_uris[data.aws_region.current.region]
     }
   )
 
@@ -182,7 +182,7 @@ module "aws_load_balancer_controller" {
   source            = "./aws-load-balancer-controller"
   helm_config       = var.aws_load_balancer_controller_helm_config
   manage_via_gitops = var.argocd_manage_add_ons
-  addon_context     = merge(local.addon_context, { default_repository = local.amazon_container_image_registry_uris[data.aws_region.current.name] })
+  addon_context     = merge(local.addon_context, { default_repository = local.amazon_container_image_registry_uris[data.aws_region.current.region] })
 }
 
 module "aws_node_termination_handler" {
@@ -484,17 +484,6 @@ module "traefik" {
   helm_config       = var.traefik_helm_config
   manage_via_gitops = var.argocd_manage_add_ons
   addon_context     = local.addon_context
-}
-
-module "vault" {
-  count = var.enable_vault ? 1 : 0
-
-  # See https://registry.terraform.io/modules/hashicorp/hashicorp-vault-eks-addon/aws/
-  source  = "hashicorp/hashicorp-vault-eks-addon/aws"
-  version = "1.0.0-rc2"
-
-  helm_config       = var.vault_helm_config
-  manage_via_gitops = var.argocd_manage_add_ons
 }
 
 module "vpa" {

@@ -972,19 +972,6 @@ variable "kubernetes_dashboard_helm_config" {
   default     = null
 }
 
-#-----------HashiCorp Vault-------------
-variable "enable_vault" {
-  description = "Enable HashiCorp Vault add-on"
-  type        = bool
-  default     = false
-}
-
-variable "vault_helm_config" {
-  description = "HashiCorp Vault Helm Chart config"
-  type        = any
-  default     = null
-}
-
 #------Vertical Pod Autoscaler(VPA) ADDON--------
 variable "enable_vpa" {
   description = "Enable Vertical Pod Autoscaler add-on"
