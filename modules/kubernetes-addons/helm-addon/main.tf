@@ -15,7 +15,7 @@ resource "helm_release" "addon" {
   repository_username        = try(var.helm_config["repository_username"], "")
   repository_password        = try(var.helm_config["repository_password"], "")
   verify                     = try(var.helm_config["verify"], false)
-  keyring                    = try(var.helm_config["keyring"], "")
+  keyring                    = try(var.helm_config["keyring"], null)
   disable_webhooks           = try(var.helm_config["disable_webhooks"], false)
   reuse_values               = try(var.helm_config["reuse_values"], false)
   reset_values               = try(var.helm_config["reset_values"], false)
@@ -41,9 +41,9 @@ resource "helm_release" "addon" {
       var.set_values,
       try(var.helm_config["set"], [])
     )) : {
-      name  = each_item.value.name
-      value = each_item.value.value
-      type  = try(each_item.value.type, null)
+      name  = each_item.name
+      value = each_item.value
+      type  = try(each_item.type, null)
     }
   ]
 
@@ -52,9 +52,9 @@ resource "helm_release" "addon" {
         try(var.helm_config["set_sensitive"], []),
         var.set_sensitive_values
     ) : {
-      name  = each_item.value.name
-      value = each_item.value.value
-      type  = try(each_item.value.type, null)
+      name  = each_item.name
+      value = each_item.value
+      type  = try(each_item.type, null)
     }
   ]
 
