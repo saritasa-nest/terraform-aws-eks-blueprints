@@ -22,7 +22,6 @@ resource "helm_release" "argocd_application" {
 
   name      = each.key
   chart     = "${path.module}/argocd-application/helm"
-  version   = "1.0.0"
   namespace = local.helm_config["namespace"]
 
   
